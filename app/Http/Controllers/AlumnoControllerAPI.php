@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 
 class AlumnoControllerAPI extends Controller
@@ -14,7 +13,7 @@ class AlumnoControllerAPI extends Controller
 
         if ($response->successful()) {
             $data = $response->json();
-            //\Log::info('API Response:', $data);
+
             return view('alumnos.getData', compact('data'));
         } else {
             return response()->json(['error' => 'Error al consultar la API'], 500);
@@ -86,10 +85,6 @@ class AlumnoControllerAPI extends Controller
             'activo' => 'boolean',
         ]);
 
-        // if (is_null($validated['pass'])) {
-        //     unset($validated['pass']);
-        // }
-        
         $response = Http::put('http://localhost:3001/api/registros/'.$id_alumno, $validated);
 
 
