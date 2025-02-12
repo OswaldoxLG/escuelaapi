@@ -6,9 +6,9 @@ use Carbon\Carbon;
 @section('title', 'Lista de estudiantes')
 
 @section('content')
-<h1>LISTA DE ESTUDIANTES</h1>
-<div class="text-end">
-    <a href="{{url('/api/alu/create')}}" class="btn btn-primary" id="crear_user">Crear</a>
+<h1 style="text-align: center">LISTA DE ESTUDIANTES</h1>
+<div class="text-start">
+    <a href="{{url('/api/alu/create')}}" class="btn btn-info">CREAR</a>
 </div>
 <br>
 <table class="table table-bordered border-warning">
@@ -48,16 +48,16 @@ use Carbon\Carbon;
         <td>{{ $item['id_grupo'] }}</td>
         <td>{{ $item['activo'] }}</td>
       <td>
-          <a href="{{ url('/api/consultar2-api/'.$item['id_alumno']) }}">Mostrar</a>
+          <a href="{{ url('/api/consultar2-api/'.$item['id_alumno']) }}" style="text-decoration:none">Mostrar</a>
       </td>
       <td>
-          <a href="{{ url('/api/alu/'.$item['id_alumno'].'/edit') }}">Editar</a>
+          <a href="{{ url('/api/alu/'.$item['id_alumno'].'/edit') }}" style="text-decoration:none">Editar</a>
       </td>
       <td>
           <form action="{{ url('/api/borrar-api/'.$item['id_alumno']) }}" method="POST">
               @csrf
               @method('DELETE')
-              <button type="submit">Borrar</button>
+              <button type="submit" class="btn btn-danger">Borrar</button>
           </form>
       </td> 
       </tr>
